@@ -111,6 +111,8 @@ python data/generate_receivables_data.py      # overdue receivables
 No build step needed — plain HTML/JS.
 ```bash
 cd frontend
+npm install
+npm run dev
 python -m http.server 5500
 ```
 Then open `http://localhost:5500` in your browser. Make sure the backend is
