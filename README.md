@@ -206,6 +206,10 @@ JSON file (escalation_queue.json) — the escalation queue
 
 CSV files — the five synthetic datasets, auto-regenerated if stale
 
+## Video Explanation of Project
+
+https://1drv.ms/v/c/72EE7D73FBAD63C9/IQDqCuiNIxLJS7vlP33Tg6QuAQ3qiBy_Of5UIfWXaHQ5ZJw?e=j7kkGh
+
 
 ## Note
 
