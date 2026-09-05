@@ -160,7 +160,7 @@ python -m pytest tests/ -v
 BACKEND:
 
 
-Tool	                             What it's for
+Tool	                             
 
 FastAPI	                
 
