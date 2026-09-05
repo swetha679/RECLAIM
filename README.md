@@ -68,6 +68,10 @@ feeds / hourly success-rate data / overdue invoices)
       v
 [Per-module batch report]  -> measured Rs recovered, recovery %, classifier precision/recall (payments only)
 ```
+```
+<img width="1096" height="1109" alt="System Architecture Pipeline Governance Flow" src="https://github.com/user-attachments/assets/a18afb66-2e53-4fd4-aa2f-812e6d877289" />
+```
+
 
 See `docs/bar_mapping.md` for how each part of this maps to the stated
 hackathon bar, and `docs/compliance_note.md` for exactly what this system
