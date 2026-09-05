@@ -160,7 +160,7 @@ python -m pytest tests/ -v
 BACKEND:
 
 
-Tool	                   What it's for
+Tool	                             What it's for
 
 FastAPI	                The web framework — all your API routes (/batch-run, /diagnose, /webhooks/payment-failed, etc.)
 
