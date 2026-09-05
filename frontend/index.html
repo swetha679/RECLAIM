@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Payment Degradation Explainability Agent</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Revenue Recovery Agent</h1>
+    <p class="subtitle">Detects revenue at risk across payment failures, checkout abandonment, phantom payments, routing degradation, and overdue receivables — diagnoses the cause in plain language, executes a bounded recovery action, and logs everything.</p>
+  </header>
+
+  <main>
+    <nav class="tabs" id="tabNav">
+      <button class="tab-btn active" data-module="payment_failure">Payment Failures</button>
+      <button class="tab-btn" data-module="checkout_abandonment">Checkout Abandonment</button>
+      <button class="tab-btn" data-module="phantom_payment">"Money Deducted, No Order"</button>
+      <button class="tab-btn" data-module="routing_degradation">Peak-Hour Routing</button>
+      <button class="tab-btn" data-module="overdue_receivable">Overdue Receivables</button>
+      <button class="tab-btn" data-module="live_feed" id="liveFeedTab">🔴 Live Feed</button>
+    </nav>
+
+    <section class="controls">
+      <button id="runBatchBtn">Run This Module</button>
+      <span id="statusText" class="status-text"></span>
+    </section>
+
+    <section id="liveFeedSection" class="hidden">
+      <div class="live-feed-header">
+        <h2><span class="live-dot"></span> Live Webhook Feed</h2>
+        <p class="hint">
+          Simulates a real Razorpay <code>payment.failed</code> webhook: each event below arrived one at a time and was
+          diagnosed, acted on, and logged the instant it landed — no batch, no manual run.
+          Trigger events by running, in a terminal:
+          <br /><code>cd backend &amp;&amp; python scripts/simulate_live_webhook.py</code>
+        </p>
+      </div>
+      <div id="liveFeedList" class="live-feed-list"></div>
+    </section>
+
+    <section id="summarySection" class="hidden">
+      <h2 id="summaryTitle">Batch Summary — Measured Results</h2>
+      <div class="metrics-grid" id="metricsGrid"></div>
+
+      <div class="charts-row" id="chartsRow">
+        <div class="chart-box">
+          <h3 id="chartTitle">Cause Breakdown</h3>
+          <div id="causeChart" class="bar-chart"></div>
+        </div>
+        <div class="chart-box" id="evalBox">
+          <h3>Classifier Accuracy (held-out test set)</h3>
+          <div id="evalSummary" class="eval-summary"></div>
+        </div>
+      </div>
+
+      <div class="structural-note hidden" id="structuralNote"></div>
+    </section>
+
+    <section id="escalationSection" class="hidden">
+      <h2>Escalation Queue</h2>
+      <div id="escalationList" class="escalation-list"></div>
+    </section>
+
+    <section id="auditSection" class="hidden">
+      <h2>Audit Trail <span class="hint">(this module only)</span></h2>
+      <p class="hint">Click a row to see the full plain-language explanation.</p>
+      <table id="auditTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Amount (₹)</th>
+            <th>Cause</th>
+            <th>Confidence</th>
+            <th>Action</th>
+            <th>Outcome</th>
+          </tr>
+        </thead>
+        <tbody id="auditTableBody"></tbody>
+      </table>
+    </section>
+
+    <div id="detailModal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-btn" id="closeModalBtn">&times;</span>
+        <h3 id="modalTxnId"></h3>
+        <p><strong>Cause:</strong> <span id="modalCause"></span></p>
+        <p><strong>Confidence:</strong> <span id="modalConfidence"></span></p>
+        <p><strong>Explanation:</strong></p>
+        <p id="modalExplanation" class="explanation-text"></p>
+        <p><strong>Recommendation:</strong></p>
+        <p id="modalRecommendation" class="recommendation-text"></p>
+        <p><strong>Action taken:</strong> <span id="modalAction"></span></p>
+        <p><strong>Outcome:</strong> <span id="modalOutcome"></span></p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Test-mode only. No real money moved, no real customers contacted. See <code>docs/compliance_note.md</code>.</p>
+  </footer>
+
+  <script src="js/api_client.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

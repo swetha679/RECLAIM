@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.pytest_cache/
+
+# Environment / secrets — never commit real API keys
+.env
+
+# Generated at runtime — every user/judge should get a fresh one
+backend/storage/*.db
+backend/storage/*.json
+
+# Node / frontend
+node_modules/
+dist/
+
+# OS
+.DS_Store
