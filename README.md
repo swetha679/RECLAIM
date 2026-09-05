@@ -162,42 +162,41 @@ BACKEND:
 
 Tool	                             What it's for
 
-FastAPI	                The web framework — all your API routes (/batch-run, /diagnose, /webhooks/payment-failed, etc.)
+FastAPI	                
 
-Uvicorn	                The server that actually runs FastAPI
+Uvicorn	                
 
-scikit-learn	          The ML library — trains and runs your payment-failure classifier
+scikit-learn	          
 
-SHAP	                   Explainability — this is what generates the "top signals" behind each diagnosis
+SHAP	                  
 
-pandas / numpy	          Data handling — reading CSVs, feature engineering
+pandas / numpy	          
 
-Razorpay SDK	          Real API integration for test-mode payment links
+Razorpay SDK	          
 
-Anthropic SDK	          LLM provider option #1 (receivables reminder wording)
+Anthropic SDK	          
 
-google-generativeai	    LLM provider option #2 — Gemini, your free-tier fallback
+google-generativeai	    
 
-python-dotenv	          Reads your .env file (API keys, config)
+python-dotenv	          
 
-Pydantic	Data validation enforces the shape of requests like TransactionIn
+Pydantic	Data validation 
 
-SQLite	                Your database (audit_log.db) — built into Python, not a separate install
+SQLite	                
 
-pytest	                Your test suite — 23 passing tests
+pytest	                
 
  FRONTEND:
  
-Tool	                   What it's for
+Tool	                   
 
-React 18	                The UI framework  
+React 18	                 
 
-Vite	                   Build tool and dev server
+Vite	                   
 
-React Router	          Page navigation (Home, Diagnose, Run Modules, etc.)
+React Router	          
 
-Recharts	                The bar charts on your Reports page
-
+Recharts	                
 
 STORAGE :
 
