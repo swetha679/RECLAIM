@@ -73,7 +73,7 @@ feeds / hourly success-rate data / overdue invoices)
 
 
 
-WORKFLOW
+###WORKFLOW
 
 
 
@@ -153,3 +153,6 @@ see `backend/app/routes/webhook.py` for the payload shape.
 cd backend
 python -m pytest tests/ -v
 ```
+###Noted
+Only payment failures uses real ML — that's where we have data to predict from. Everything else is rule-based on purpose. We added an LLM in receivables purely to write reminder wording — never to decide. Letting AI make money or contact decisions would undermine the safety we're proving with tests — restraint here is the judgment.
+
