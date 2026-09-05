@@ -153,6 +153,35 @@ see `backend/app/routes/webhook.py` for the payload shape.
 cd backend
 python -m pytest tests/ -v
 ```
+
+## Tech Stack 
+BACKEND:
+Tool	                   What it's for
+FastAPI	                The web framework — all your API routes (/batch-run, /diagnose, /webhooks/payment-failed, etc.)
+Uvicorn	                The server that actually runs FastAPI
+scikit-learn	          The ML library — trains and runs your payment-failure classifier
+SHAP	                   Explainability — this is what generates the "top signals" behind each diagnosis
+pandas / numpy	          Data handling — reading CSVs, feature engineering
+Razorpay SDK	          Real API integration for test-mode payment links
+Anthropic SDK	          LLM provider option #1 (receivables reminder wording)
+google-generativeai	    LLM provider option #2 — Gemini, your free-tier fallback
+python-dotenv	          Reads your .env file (API keys, config)
+Pydantic	Data validation enforces the shape of requests like TransactionIn
+SQLite	                Your database (audit_log.db) — built into Python, not a separate install
+pytest	                Your test suite — 23 passing tests
+
+ FRONTEND:
+Tool	                   What it's for
+React 18	                The UI framework  
+Vite	                   Build tool and dev server
+React Router	          Page navigation (Home, Diagnose, Run Modules, etc.)
+Recharts	                The bar charts on your Reports page
+
+STORAGE :
+SQLite (audit_log.db) — the unified audit trail
+JSON file (escalation_queue.json) — the escalation queue
+CSV files — the five synthetic datasets, auto-regenerated if stale
+
 ## Note
 
 
